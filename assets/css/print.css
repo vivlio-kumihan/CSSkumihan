@@ -1,5 +1,14 @@
+/* 質問
+前提　ノーマライズCSSを差し替えた上で、
+勝手に段落を送る機能を停止させたい。
+任意で次の段落へ送る指示を出せるコードを知りたい。 */
+
+/* GlobalにインストールしたVivliostyle CLIのアップデートは以下のコマンドでできます、お試しくださいー */
+/* npm update -g @vivliostyle/cli */
+
+
 html {
-    font-size: 3.5mm;
+    font-size: 14Q;
     line-height: 6mm;
 }
 
@@ -7,9 +16,8 @@ body {
     column-count: 2;
     column-gap: 2rem;
     /* 初期値は"balance"なので不要ではないか？ */
-    /* column-fill: auto; */
-    /* column-fill: balance-auto; */
-    column-fill: balance;
+    /* other option: auto, balance-auto */
+    column-fill: balance; 
     /* 検証用背景のアミ */
     background-color: rgba(0, 0, 0, 0.05);
 }
@@ -17,54 +25,30 @@ body {
 /* ========== ページ ========== */
 @page {
     size: 210mm 297mm;
-    margin: 21mm 21mm 20.5mm;
+    margin: 21mm 21mm 18mm;
     /* トンボ表示 */
     marks: crop;
 }
 
-/* @page :right {
-    @top-right {
-        content: "";
-        margin: -3mm -85px 3rem -85px;
-        vertical-align: bottom;
-        padding: 0 85px 1rem;
-        font-size: 1.4rem;
-        font-family: SourceHanSansJP, sans-serif;
-        font-weight: bold;
-        font-feature-settings: "palt" 1;
-        color: white;
-    }
-    @top-left-corner {
-        content: "";
-        margin: -3mm -720.5px 3rem 0;
-        background: url("../img/img_幹事挨拶-ヘッダーの罫.svg") left bottom no-repeat, rgba(0, 0, 0, 0.5);
-        background-size: cover;
-    }
-    @bottom-right {
-        content: "法曹同志会 2022 |　"counter(page);
-        margin-right: 2rem;
-        font-family: YakuCaltMincho, YuMincho, Yu Mincho, serif;
-        font-size: 11px;
-        vertical-align: top;
-        padding-top: 2rem;
-    }
+/* ========== 見出し ========== */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0mm;
+    font-size: 3.5mm;
+    line-height: 6mm;
+    /* font-family: SourceHanSansJP-Regular, sans-serif; */
+    font-feature-settings: "palt" 1;
+    break-after: avoid
 }
 
-@page :left {
-    @top-left-corner {
-        content: "";
-        margin: -3mm -709px 3rem -3mm;
-        background: url("../img/img_幹事挨拶-ヘッダーの罫.svg") left bottom no-repeat, rgba(0, 0, 0, 0.5);
-        background-size: cover;
-    }
-    @bottom-left {
-        content: counter(page) "　| 法曹同志会 2022";
-        font-family: YakuCaltMincho, YuMincho, Yu Mincho, serif;
-        font-size: 11px;
-        vertical-align: top;
-        padding-top: 2rem;
-    }
-} */
+/* ========== 本文 ========== */
+p {
+    margin: 0;
+    font-family: YakuCaltMincho, YuMincho, Yu Mincho, serif;
+    color: black;
+    text-align: justify;
+    text-indent: 1rem;
+    break-after: auto;
+}
 
 
 /* ========== インデント ========== */
@@ -101,97 +85,85 @@ body {
     letter-spacing: 0.5rem;
 }
 
+/* 課題 */
+
+/* ========== タイトルスペース ========== */
+.report-title {
+    page-break-before: always;
+    column-span: all;
+    width: 624px;
+    height: 184px;
+    box-sizing: border-box;
+    
+    position: absolute;
+    top: -92px;
+
+    border-left: 0.15mm solid black;
+    border-right: 2.5mm solid black;
+}
+.title-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    border-bottom: 1px solid black;
+}
+.organization {
+    flex-grow: 2;
+    margin-left: 0.15mm;
+}
+.organization::before {
+    content: "　■　";
+    color: rgba(0, 0, 0, 0.25);
+}
+.place::before {
+    content: "　於　";
+}
+.report-author {
+    margin-bottom: 0.25rem;
+    padding-right: 1rem;
+    text-align: right;
+    font-size: 1.1rem;
+}
+.post {
+    font-size: 0.8em;
+    font-family: sans-serif;
+}
+.post::after {
+    content: "";
+    margin-right: 1em;
+}
+.catch-copy {
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-feature-settings: "palt";
+    padding: 0 1rem;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.avoid-space {
+    float: left;
+    float-reference: column;
+    column-span: all;
+    width: 624px;
+    height: 115px;
+}
+.avoid-space::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+
+
+
+
+
+
+
 /* ========== ページの先頭へ ========== */
 .back-to-top {
     display: none;
-}
-
-
-/* ========== タイトルスペース ========== */
-/* #secretary-greet-title {
-    height: 132px;
-    break-before: page;
-    float-reference: page;
-    float: top;
-    background: linear-gradient(to right, transparent 0%, transparent 10%, white 100%) top left no-repeat,
-                url(../img/img_幹事挨拶-タイトルバックの球.svg) top left no-repeat;
-    background-size: 19%;
-}
-#secretary-greet-title img {
-    float: right;
-    width: 117px;
-    height: 154px;
-    margin-left: 1rem;
-    border-radius: 50%;
-    position: relative;
-    top: -2rem;
-}
-#secretary-greet-title h1,
-#secretary-greet-title h2 {
-    margin-left: 5rem;
-    line-height: 1.2;
-    text-shadow: whitesmoke 1px 0 10px;
-}
-#secretary-greet-title h1 {
-    padding-top: 0.5rem;
-    font-size: 1.2rem;
-    font-family: SourceHanSansJP-Heavy, sans-serif;
-    font-weight: bolder;
-    color: rgba(0, 0, 0, 0.8);
-}
-#secretary-greet-title h2 {
-    margin-bottom: 1rem;
-    font-size: 2.75rem;
-    font-family: SourceHanSansJP-ExtraLight, sans-serif;
-    font-weight: lighter;
-    color: rgba(0, 0, 0, 0.8);
-}
-#secretary-greet-title .secretary,
-#secretary-greet-title .author {
-    font-size: 0.9rem;
-    line-height: 1;
-    margin-left: 22rem;
-    margin-bottom: 0.75rem;
-}
-#secretary-greet-title .author::before {
-    content: "";
-    margin: 1rem;
-}
-#secretary-greet-title .author {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 0.25em;
-    font-feature-settings: "palt" 1;
-}
-#secretary-greet-title .generation {
-    font-size: 1rem;
-    font-weight: normal;
-    letter-spacing: 0;
-} */
-
-/* ========== 見出し ========== */
-h1, h2, h3, h4, h5, h6 {
-    font-size: 1rem;
-    /* line-height: 22px; */
-    margin: 0;
-    /* font-family: SourceHanSansJP-Regular, sans-serif; */
-    font-feature-settings: "palt" 1;
-    break-after: avoid
-}
-
-/* h3, h4 {
-    margin-left: 1rem;
-} */
-
-h3 {
-    /* margin-top: 21px; */
-}
-
-/* ========== 本文 ========== */
-p {
-    margin: 0;
-    font-family: YakuCaltMincho, YuMincho, Yu Mincho, serif;
-    color: black;
-    text-align: justify;
-    text-indent: 1rem;
 }

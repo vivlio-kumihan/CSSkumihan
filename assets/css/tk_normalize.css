@@ -10,9 +10,9 @@
 
 html {
   /* defalt */
-  line-height: 1.15;
+  /* line-height: 1.15; */
   /* my setting */
-  /* line-height: 0; */
+  line-height: 0;
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
@@ -40,10 +40,6 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
 
 /* Grouping content
    ========================================================================== */
