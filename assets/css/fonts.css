@@ -1,15 +1,19 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400&display=swap');
+/* Googleの明朝体ファミリーフォント */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
+/* extra-light=200, light=300, regular=400, medium=500, semi-bold=600, bold=700, black=900 */
 
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
+/* Googleのゴシック体ファミリーフォント */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+/* thin=100, light=300, regular=400, medium=500, bold=700, black=900 */
 
+/* 約物をベタの時に適宜詰めてくれる明朝体 */
 @font-face {
     font-family: 'YakuCaltMincho';
     src: url('https://raw.githack.com/monokano/Fonts/main/font/YakuCaltMincho/YakuCaltMincho-R.woff');
     font-weight: 300;
 }
 
+/* 約物をベタの時に適宜詰めてくれるゴシック体 */
 @font-face {
     font-family: 'YakuCaltGothic';
     src: url('https://raw.githack.com/monokano/Fonts/main/font/YakuCaltGothic/YakuCaltGothic-R.woff');

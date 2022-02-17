@@ -9,7 +9,8 @@ body {
     column-gap: 2rem;
     /* 初期値は"balance"なので不要ではないか？ */
     /* other option: auto, balance-auto */
-    column-fill: balance; 
+    column-fill: auto; 
+
     /* 検証用背景のアミ */
     background-color: rgba(0, 0, 0, 0.05);
 }
@@ -25,17 +26,26 @@ body {
 /* ========== 見出し ========== */
 h1, h2, h3, h4, h5, h6 {
     margin: 0mm;
-    font-size: 3.5mm;
+    font-size: 1rem;
     line-height: 6mm;
-    /* font-family: SourceHanSansJP-Regular, sans-serif; */
+    font-weight: 900;
+    font-family: 'Noto Sans JP', sans-serif;
     font-feature-settings: "palt" 1;
-    break-after: avoid
+    break-after: auto;
+}
+
+h2, h3 {
+    /* font-size: 12Q;
+    line-height: 6mm;
+    font-weight: 900;
+    margin: 3mm 0; */
 }
 
 /* ========== 本文 ========== */
-p {
+p {    
     margin: 0;
-    font-family: YakuCaltMincho, YuMincho, Yu Mincho, serif;
+    font-family: 'Noto Serif JP', serif;
+    /* font-family: YakuCaltMincho, YuMincho, Yu Mincho, serif; */
     color: black;
     text-align: justify;
     text-indent: 1rem;
