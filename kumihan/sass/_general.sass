@@ -1,0 +1,102 @@
+@use "forwards" as fw
+
+@page
+  size: 148mm 210mm
+  font-size: 10Q
+  @bottom-center
+    content: counter(page)
+    margin-top: 4mm
+    // 横組の行の高さ10Qで揃える。
+    height: 10q
+@page :left
+    margin: 15mm 16mm 15mm 18.25mm
+@page :right
+    margin: 15mm 18.25mm 15mm 16mm
+@page :nth(1)
+  display: flex
+  flex-direction: column
+  align-items: center
+  position: relative
+  width: 100vw
+  height: 100vh
+  margin: 0
+  padding: 0
+  background: url(./img/laptop-2298286_1920.png) no-repeat center 80%
+  background-size: 85%
+  @bottom-center
+    content: none
+
+:root
+  font-family: fw.$noto-sf
+  font-size: 13Q
+  line-height: 24Q
+  font-weight: 400
+  text-spacing: auto
+  windows: 1
+  orphans: 1
+  body
+    h1, .subtitle
+      line-height: 1.2
+      text-align: center
+      font-feature-settings: "palt"
+      counter-reset: section-counter 0
+    h1
+      margin-top: 25mm
+      font-size: calc(13Q * 4)
+    .subtitle
+      margin-top: 10mm
+      font-size: calc(13Q * 4 *0.5)
+      font-weight: 700
+      break-after: verso
+    h2
+      position: relative
+      padding-left: 4rem
+      font-size: calc(13Q * 1.5)
+      font-weight: 700
+      line-height: calc(24Q * 3)
+      &::before
+        position: absolute
+        top: -0.5mm
+        left: 1rem
+        font-size: calc(13px * 4)
+        content: counter(section-counter)
+        counter-increment: section-counter
+        color: #999
+    p
+      font-size: 1rem
+      text-align: justify
+      text-indent: 1em
+      margin: 0
+    figure
+      margin: 4mm 0
+      .frame
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100%
+        aspect-ratio: 3/1
+        border: .15mm solid #333
+        img
+          width: 70%
+        &.img-one
+          aspect-ratio: 3/2
+          img
+            width: 100%
+            object-fit: cover
+        &.img-four
+          img
+            width: 80%
+        &.img-five
+          img
+            width: 90%
+        
+
+
+  
+
+// WEBフォントのインポート
+// Noto Sans JP
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;900&display=swap')
+// Noto Serif JP
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap')
+
